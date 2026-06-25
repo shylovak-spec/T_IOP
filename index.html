@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Охорона Праці: Швидкий Довідник</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+            --primary: #2c3e50;
+            --success: #27ae60;
+            --danger: #c0392b;
+            --warning: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 { margin: 0; font-size: 24px; }
+        header p { margin: 5px 0 0 0; opacity: 0.8; }
+
+        /* Стиль для розгортних блоків (Accordion) */
+        details {
+            background: white;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        summary {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+            color: var(--primary);
+            list-style: none; /* прибираємо стандартну стрілку */
+            position: relative;
+            padding-left: 25px;
+        }
+
+        /* Кастомна стрілочка */
+        summary::before {
+            content: "➔";
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Блоки всередині інструкції */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 5px solid;
+        }
+
+        .card h4 { margin: 0 0 10px 0; font-size: 16px; }
+        .card ul { margin: 0; padding-left: 20px; }
+        .card li { margin-bottom: 5px; }
+
+        /* Кольорові схеми для карток */
+        .card.start { border-left-color: var(--primary); background: #ebf3f9; }
+        .card.work { border-left-color: var(--success); background: #e8f8f0; }
+        .card.danger { border-left-color: var(--danger); background: #fdedec; }
+        .card.emergency { border-left-color: var(--warning); background: #fef5e7; }
+
+        /* Пошуковий рядок */
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Охорона Праці & Безпека</h1>
+        <p>Швидкі інструкції для самостійного ознайомлення</p>
+    </header>
+
+    <input type="text" id="search" class="search-box" placeholder="Введіть назву інструкції або ключове слово (напр. Офіс, Електрика)..." onkeyup="filterInstructions()">
+
+    <details class="instruction-block">
+        <summary class="title">Інструкція №1: Робота в офісі та з ПК</summary>
+        <div class="grid">
+            <div class="card start">
+                <h4>1. Перед початком</h4>
+                <ul>
+                    <li>Перевір відсутність оголених дротів під столом.</li>
+                    <li>Налаштуй висоту стільця (монітор на рівні очей).</li>
+                </ul>
+            </div>
+            <div class="card work">
+                <h4>2. Під час роботи</h4>
+                <ul>
+                    <li>Кожні 50 хвилин роби перерву на 5-10 хв для очей.</li>
+                    <li>Не заставляй проходи сумками чи коробками.</li>
+                </ul>
+            </div>
+            <div class="card danger">
+                <h4>3. Заборонено!</h4>
+                <ul>
+                    <li>Пити каву/воду безпосередньо над клавіатурою чи ноутбуком.</li>
+                    <li>Вмикати в один подовжувач обігрівач, чайник і ПК одночасно.</li>
+                </ul>
+            </div>
+            <div class="card emergency">
+                <h4>4. Аварія / Пожежа</h4>
+                <ul>
+                    <li>Відчули запах горілого пластику? **Знеструмте техніку**.</li>
+                    <li>План евакуації — на коридорі біля ліфта. Номер охорони: 101.</li>
+                </ul>
+            </div>
+        </div>
+    </details>
+
+    <details class="instruction-block">
+        <summary class="title">Інструкція №2: Електробезпека загальна</summary>
+        <div class="grid">
+            <div class="card start">
+                <h4>1. Перед початком</h4>
+                <ul>
+                    <li>Візуально перевір цілісність вилок та розеток.</li>
+                </ul>
+            </div>
+            <div class="card work">
+                <h4>2. Під час роботи</h4>
+                <ul>
+                    <li>Витягуй вилку з розетки за корпус, а не тягни за шнур.</li>
+                </ul>
+            </div>
+            <div class="card danger">
+                <h4>3. Заборонено!</h4>
+                <ul>
+                    <li>Торкатися обладнання **мокрими руками**.</li>
+                    <li>Самостійно ремонтувати розетки (кличте електрика).</li>
+                </ul>
+            </div>
+            <div class="card emergency">
+                <h4>4. Якщо уразило струмом</h4>
+                <ul>
+                    <li>Не торкайтеся потерпілого голими руками, поки він під напругою!</li>
+                    <li>Вимкніть рубильник або відтягніть людину сухою дерев'яною палицею.</li>
+                </ul>
+            </div>
+        </div>
+    </details>
+</div>
+
+<script>
+    // Простий скрипт для пошуку по назвах інструкцій
+    function filterInstructions() {
+        let input = document.getElementById('search').value.toLowerCase();
+        let blocks = document.getElementsByClassName('instruction-block');
+
+        for (let i = 0; i < blocks.length; i++) {
+            let title = blocks[i].querySelector('.title').innerText.toLowerCase();
+            if (title.includes(input)) {
+                blocks[i].style.display = "";
+            } else {
+                blocks[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
